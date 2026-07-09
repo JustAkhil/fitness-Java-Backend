@@ -31,8 +31,8 @@ public class Activity {
 
 
 
-    // in database level we need to store in json format
-    // so we convert map into json for database
+    // in database level we need to store in JSON format
+    // so we convert map into JSON for database
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
     private Map<String,Object>additionalMatrices;
