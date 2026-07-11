@@ -43,5 +43,6 @@ public class RecommendationController {
         List<Recommendation> recommendationList=recommendationService.getActivityRecommendation(activityId);
         return ResponseEntity.ok(recommendationList);
 
+
     }
 }
