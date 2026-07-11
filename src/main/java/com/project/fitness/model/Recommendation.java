@@ -4,9 +4,12 @@ package com.project.fitness.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
@@ -16,6 +19,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Recommendation {
 
     @Id
@@ -25,7 +29,7 @@ public class Recommendation {
     private String type;
 
 
-    // in sql then char limit is 250 we are modifying the limit
+    // in SQL then char limit is 250 we are modifying the limit
     // upto 2k using column annotation
     @Column(length = 2000)
     private String recommendation;
@@ -41,7 +45,10 @@ public class Recommendation {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
     private List<String> safety;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
+    @UpdateTimestamp
     private  LocalDateTime updatedAt;
 
     @ManyToOne
